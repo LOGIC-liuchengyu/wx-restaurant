@@ -24,100 +24,11 @@ Page({
         navIcon: 'iconfont icon-erweima'
       }
     ],
-    hotShop: [
-      // {
-      //   shopImg: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-      //   shopName: '青花椒砂锅鱼'
-      // },
-      // {
-      //   shopImg: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-      //   shopName: '青花椒砂锅鱼'
-      // },
-      // {
-      //   shopImg: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-      //   shopName: '青花椒砂锅鱼'
-      // },
-      // {
-      //   shopImg: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-      //   shopName: '青花椒砂锅鱼'
-      // },
-      // {
-      //   shopImg: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-      //   shopName: '青花椒砂锅鱼'
-      // },
-      // {
-      //   shopImg: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-      //   shopName: '青花椒砂锅鱼'
-      // }
-    ],
-    nearShop: [
-      // {
-      //   img: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-      //   name: '青花椒砂锅鱼',
-      //   price: '30',
-      //   kind: '中国菜',
-      //   distance: '8.6km',
-      //   status: '无需排队',
-      //   grade: 'five-star'
-      // },
-      // {
-      //   img: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-      //   name: '青花椒砂锅鱼',
-      //   price: '30',
-      //   kind: '中国菜',
-      //   status: '无需排队',
-      //   grade: 'four-star'
-      // },
-      // {
-      //   img: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-      //   name: '青花椒砂锅鱼',
-      //   price: '128',
-      //   kind: '中国菜',
-      //   status: '无需排队',
-      //   grade: 'one-star'
-      // }
-    ],
-    imgUrls: [
-      'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-      'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
-      'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
-    ],
-    hotList: [
-      {
-        img: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-        text: '喜欢干锅菜，总觉得他有阿斯顿发觉是；老地方叫阿斯顿飞机阿斯顿发斯蒂芬绝对是'
-      },
-      {
-        img: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-        text: '喜欢干锅菜，总觉得他有阿斯顿发觉是；老地方叫阿斯顿飞机阿斯顿发斯蒂芬绝对是'
-      },
-      {
-        img: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-        text: '喜欢干锅菜，总觉得他有阿斯顿发觉是；老地方叫阿斯顿飞机阿斯顿发斯蒂芬绝对是'
-      }
-    ],
-    tuijian: [
-      {
-        img: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-        text: '小米辣椒秘制葱香牛肉',
-        money: '22.00'
-      },
-      {
-        img: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-        text: '小米辣椒秘制葱香牛肉',
-        money: '22.00'
-      },
-      {
-        img: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-        text: '小米辣椒秘制葱香牛肉',
-        money: '22.00'
-      },
-      {
-        img: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-        text: '小米辣椒秘制葱香牛肉',
-        money: '22.00'
-      }
-    ],
+    hotShop: [],
+    nearShop: [],
+    imgUrls: [],
+    hotList: [],
+    tuijian: [],
     star: ['zero-star', 'one-star', 'two-star', 'three-star', 'four-star', 'five-star']
   },
   gocaidetail (e) {

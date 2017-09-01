@@ -121,26 +121,18 @@ App({
    */
   mainLogin (_this, callback, callback2, callback3, callback4) {
     let that = this
-    let loginObj = {
-      success: function (params) {
-        // 获取用户登陆code
-        // console.log(res)
-        // 获取用户的session_key
-        // console.log('mainLogin' + res.code)
-        let obj = {
-          url: useUrl.serviceUrl.login + '?code=' + params.code,
-          method: 'GET',
-          // data: {
-          //   code: res.code
-          // },
-          header: 'application/json',
-          success (res) {
-            // console.log(useUrl.serviceUrl.login + '?code=' + params.code)
-            // console.log(res)
-            // console.log(res.data.data.session_key)
-            // session_key 存储
-            that.data.session_key = res.data.data.session_key
-            wx.setStorageSync('session_key', res.data.data.session_key)
+    if (wx.getStorageSync('session_key')) {
+      let obj = {
+        url: useUrl.serviceUrl.jifen,
+        method: 'GET',
+        header: {
+          'content-type': 'application/json'
+        },
+        data: {
+          session_key: wx.getStorageSync('session_key')
+        },
+        success (res) {
+          if (res.data.code === 200) {
             if (callback) {
               callback()
             }
@@ -153,29 +145,123 @@ App({
             if (callback4) {
               callback4()
             }
-          },
-          fail (res) {
-            console.log(res)
+          } else {
+            let loginObj = {
+              success: function (params) {
+                // 获取用户登陆code
+                // console.log(res)
+                // 获取用户的session_key
+                // console.log('mainLogin' + res.code)
+                let obj = {
+                  url: useUrl.serviceUrl.login + '?code=' + params.code,
+                  method: 'GET',
+                  // data: {
+                  //   code: res.code
+                  // },
+                  header: 'application/json',
+                  success (res) {
+                    // console.log(useUrl.serviceUrl.login + '?code=' + params.code)
+                    // console.log(res)
+                    // console.log(res.data.data.session_key)
+                    // session_key 存储
+                    that.data.session_key = res.data.data.session_key
+                    wx.setStorageSync('session_key', res.data.data.session_key)
+                    if (callback) {
+                      callback()
+                    }
+                    if (callback2) {
+                      callback2()
+                    }
+                    if (callback3) {
+                      callback3()
+                    }
+                    if (callback4) {
+                      callback4()
+                    }
+                  },
+                  fail (res) {
+                    console.log(res)
+                  }
+                }
+                that.getSessionKey(obj)
+                // 获取用户信息
+                let obj2 = {
+                  success (res) {
+                    // console.log(res)
+                    that.data.userInfo = res.userInfo
+                    wx.setStorageSync('userInfo', res.userInfo)
+                    if (_this) {
+                      _this.setData({
+                        userInfo: res.userInfo
+                      })
+                    }
+                  }
+                }
+                that.getUserInfo(obj2)
+              }
+            }
+            that.login(loginObj)
           }
         }
-        that.getSessionKey(obj)
-        // 获取用户信息
-        let obj2 = {
-          success (res) {
-            // console.log(res)
-            that.data.userInfo = res.userInfo
-            wx.setStorageSync('userInfo', res.userInfo)
-            if (_this) {
-              _this.setData({
-                userInfo: res.userInfo
-              })
+      }
+      that.requestInfo(obj)
+    } else {
+      let loginObj = {
+        success: function (params) {
+          // 获取用户登陆code
+          // console.log(res)
+          // 获取用户的session_key
+          // console.log('mainLogin' + res.code)
+          let obj = {
+            url: useUrl.serviceUrl.login + '?code=' + params.code,
+            method: 'GET',
+            // data: {
+            //   code: res.code
+            // },
+            header: 'application/json',
+            success (res) {
+              // console.log(useUrl.serviceUrl.login + '?code=' + params.code)
+              // console.log(res)
+              // console.log(res.data.data.session_key)
+              // session_key 存储
+              that.data.session_key = res.data.data.session_key
+              wx.setStorageSync('session_key', res.data.data.session_key)
+              if (callback) {
+                callback()
+              }
+              if (callback2) {
+                callback2()
+              }
+              if (callback3) {
+                callback3()
+              }
+              if (callback4) {
+                callback4()
+              }
+            },
+            fail (res) {
+              console.log(res)
             }
           }
+          that.getSessionKey(obj)
+          // 获取用户信息
+          let obj2 = {
+            success (res) {
+              // console.log(res)
+              that.data.userInfo = res.userInfo
+              wx.setStorageSync('userInfo', res.userInfo)
+              if (_this) {
+                _this.setData({
+                  userInfo: res.userInfo
+                })
+              }
+            }
+          }
+          that.getUserInfo(obj2)
         }
-        that.getUserInfo(obj2)
       }
+      that.login(loginObj)
     }
-    that.login(loginObj)
   },
   /**
    * 生命周期函数--监听小程序初始化
@@ -185,7 +271,7 @@ App({
     // let that = this
     // console.log(' ========== Application is launched ========== ')
     // 登陆态检查
-    this.sessionCheck()
+    this.mainLogin()
     // 用户登陆
   },
   /**

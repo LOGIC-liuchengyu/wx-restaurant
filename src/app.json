@@ -4,10 +4,10 @@
   // https://mp.weixin.qq.com/debug/wxadoc/dev/framework/config.html#pages
   "pages": [
     "pages/index/index",
+    "pages/payorder/payorder",
     "pages/ordering/ordering",
     "pages/caidetail/caidetail",
 //    "pages/businessCooperation/businessCooperation",
-    "pages/payorder/payorder",
     "pages/grade/grade",
     "pages/gratuity/gratuity",
     "pages/detail/detail",
@@ -28,7 +28,7 @@
     "navigationBarTextStyle": "white",
     // 类型：String；默认值：无
     // 导航栏标题文字内容
-    "navigationBarTitleText": "WeApp Boilerplate",
+    "navigationBarTitleText": "XY美味",
     // 类型：HexColor；默认值：#ffffff
     // 窗口的背景色
     "backgroundColor": "#ed4d30",

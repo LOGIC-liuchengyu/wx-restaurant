@@ -7,6 +7,49 @@
     <text>已点{{ order.order.count }}个菜</text>
     <text>订单号{{ order.order.order_no }}</text>
   </view>
+  <view class="typeChoose">
+    <view class="tc-top">
+      <radio-group class="radio-group" bindchange="radioChange">
+        类型:
+        <label class="radio" wx:for="{{items}}">
+          <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+        </label>
+      </radio-group>
+    </view>
+
+    <view wx:if="{{ iindex != 2 }}">
+      <view class="tc-p">
+        <picker bindchange="bindPickerChange" value="{{pindex}}" range="{{array}}">
+          <view class="picker ppp">
+            用餐人数：<text class="p-i">{{array[pindex]}} <text>▼</text></text>
+          </view>
+        </picker>
+      </view>
+
+      <view class="tc-s">
+        <picker bindchange="bindPickerChanges" value="{{sindex}}" range="{{arrays}}">
+          <view class="picker">
+            到店时间：<text class="p-i">{{arrays[sindex]}} <text>▼</text></text>
+          </view>
+        </picker>
+
+        <picker style="margin-left: 40rpx;" mode="time" value="{{time}}" bindchange="bindTimeChange">
+          <view class="picker">
+            <text class="p-i">{{time}} <text>▼</text></text>
+          </view>
+        </picker>
+      </view>
+    </view>
+    <view class="addd" wx:else>
+      <view>
+        <input placeholder="请输入您的收货地址"/>
+      </view>
+      <view>
+        <input type="number" maxlength="11" placeholder="请输入您的联系方式" />
+      </view>
+    </view>
+    <view class="tc-t">备注:<input placeholder="还要给商家交代点什么吗？"/></view>
+  </view>
   <view class="orderList">
     <view class="time">
       下单时间:{{ order.order.addtime }}

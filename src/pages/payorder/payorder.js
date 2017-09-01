@@ -9,43 +9,39 @@ Page({
   data: {
     title: 'payorder',
     index: 0,
-    allMoney: 582.02,
-    order: {
-      // restaurant: '人马大饭堂',
-      // count: 5,
-      // number: '20170326122',
-      // time: '2017/3/26 13:23:02',
-      // goods: [
-      //   {
-      //     name: '鱼香肉丝',
-      //     count: 2,
-      //     money: '23.00'
-      //   },
-      //   {
-      //     name: '鱼香肉丝',
-      //     count: 2,
-      //     money: '23.00'
-      //   },
-      //   {
-      //     name: '鱼香肉丝',
-      //     count: 2,
-      //     money: '23.00'
-      //   },
-      //   {
-      //     name: '鱼香肉丝',
-      //     count: 2,
-      //     money: '23.00'
-      //   },
-      //   {
-      //     name: '鱼香肉丝',
-      //     count: 2,
-      //     money: '23.00'
-      //   }
-      // ],
-      // allMoney: 582.02,
-      // concessional: ['不使用优惠券', '满100减20', '满100减30', '满300减10', '满500优惠5折'],
-      // delMoney: [0, -20, -30, -100, 0.5]
-    }
+    allMoney: 0,
+    order: {},
+    iindex: 0,
+    items: [
+      {name: '0', value: '堂食', checked: 'true'},
+      {name: '1', value: '打包带走'},
+      {name: '2', value: '外卖'}
+    ],
+    pindex: 0,
+    array: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, '15人以上'],
+    sindex: 0,
+    arrays: ['已在店', '今天', '明天', '后天']
+  },
+  bindTimeChange (e) {
+    this.setData({
+      time: e.detail.value
+    })
+  },
+  bindPickerChanges (e) {
+    this.setData({
+      sindex: e.detail.value
+    })
+  },
+  bindPickerChange (e) {
+    // console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      pindex: e.detail.value
+    })
+  },
+  radioChange (e) {
+    this.setData({
+      iindex: e.detail.value
+    })
   },
   /**
    * 优惠券选择
@@ -159,7 +155,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad (params) {
+  // onLoad () {
     // console.log(e)
+    let time = (new Date()).getHours() + ':' + (new Date()).getMinutes()
+    this.setData({
+      time: time
+    })
+    // let params = {}
+    // params['o_id'] = 28
+    // params['s_id'] = 6
     this.getOrderInfo(params)
     // TODO: onLoad
   },
